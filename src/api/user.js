@@ -1,4 +1,3 @@
-
 import request from '@/utils/request'
 
 /**
@@ -19,9 +18,50 @@ const getCaptcha = () => {
  */
 const login = (data) => {
   return request({
-    url: '/login?username=' + data.username + '&password=' + data.password + '&code=' + data.code + '&token=' + data.token,
+    url:
+      '/login?username=' +
+      data.username +
+      '&password=' +
+      data.password +
+      '&code=' +
+      data.code +
+      '&token=' +
+      data.token,
     method: 'POST',
     data
+  })
+}
+
+/**
+ * 获取用户信息接口
+ * @returns {AxiosPromise}
+ */
+const getUserInfo = () => {
+  return request({
+    url: '/user/info',
+    method: 'GET'
+  })
+}
+
+/**
+ * 获取用户权限接口
+ * @returns {AxiosPromise}
+ */
+const getPermissionList = () => {
+  return request({
+    url: '/menu/nav',
+    method: 'GET'
+  })
+}
+
+/**
+ * 退出登录接口
+ * @returns {AxiosPromise}
+ */
+const logout = () => {
+  return request({
+    url: '/logout',
+    method: 'POST'
   })
 }
 
@@ -30,5 +70,8 @@ const login = (data) => {
  */
 export default {
   getCaptcha,
-  login
+  login,
+  getUserInfo,
+  getPermissionList,
+  logout
 }
